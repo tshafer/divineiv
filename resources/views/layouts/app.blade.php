@@ -18,32 +18,97 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Medical Spa Color Palette */
+        /* Divine IV & Wellness Brand Colors - Enhanced Blues Closer to Logo */
         :root {
-            --primary-navy: #1e3a8a;
-            --primary-soft: #3b82f6;
-            --secondary-coral: #fb7185;
-            --accent-gold: #d97706;
-            --background-soft: #fefdfb;
-            --background-cool: #f8fafc;
-            --text-dark: #1f2937;
-            --text-medium: #6b7280;
+            /* Logo colors for accent use */
+            --brand-magenta: #c34298;
+            --brand-cyan: #05abdb;
+
+            /* Professional navy base */
+            --primary-navy: #1e293b;
+            --primary-navy-light: #334155;
+            --primary-navy-dark: #0f172a;
+
+            /* Enhanced blues inspired by logo cyan */
+            --primary-blue: #2563eb;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1d4ed8;
+            --bright-cyan: #0891b2;
+            --bright-cyan-light: #06b6d4;
+            --bright-cyan-dark: #0e7490;
+
+            /* Logo cyan for strategic highlights */
+            --logo-cyan: #05abdb;
+            --logo-cyan-soft: rgba(5, 171, 219, 0.1);
+            --logo-cyan-medium: rgba(5, 171, 219, 0.6);
+
+            /* Warm neutral backgrounds */
+            --background-cream: #fefdf8;
+            --background-soft: #fafaf9;
+            --background-blue-tinted: #f8fafc;
+            --background-light-blue: #f0f7ff;
+
+            /* Professional text colors */
+            --text-dark: #111827;
+            --text-medium: #64748b;
+            --text-light: #94a3b8;
+            --text-navy: #1e293b;
+
+            /* Enhanced blue gradients */
+            --brand-gradient: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--bright-cyan) 50%, var(--bright-cyan-light) 100%);
+            --navy-blue-gradient: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue-light) 100%);
+            --cyan-gradient: linear-gradient(135deg, var(--bright-cyan-dark) 0%, var(--logo-cyan) 100%);
+            --hero-gradient: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 50%, var(--bright-cyan) 100%);
+            --brand-gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(5, 171, 219, 0.05) 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
         }
 
-        .medical-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+        .brand-gradient {
+            background: var(--brand-gradient);
+        }
+
+        .hero-gradient {
+            background: var(--hero-gradient);
+        }
+
+        .navy-blue-gradient {
+            background: var(--navy-blue-gradient);
+        }
+
+        .cyan-gradient {
+            background: var(--cyan-gradient);
+        }
+
+        .brand-gradient-subtle {
+            background: var(--brand-gradient-subtle);
         }
 
         .soft-gradient {
-            background: linear-gradient(135deg, #fefdfb 0%, #f8fafc 100%);
+            background: linear-gradient(135deg, var(--background-cream) 0%, var(--background-blue-tinted) 100%);
         }
 
-        .coral-gradient {
-            background: linear-gradient(135deg, #fb7185 0%, #fbbf24 100%);
+        .logo-cyan-highlight {
+            color: var(--logo-cyan);
+        }
+
+        .logo-cyan-bg-soft {
+            background: var(--logo-cyan-soft);
+        }
+
+        .logo-cyan-bg-medium {
+            background: var(--logo-cyan-medium);
+        }
+
+        /* Logo accent colors for special highlighting only */
+        .magenta-accent {
+            color: var(--brand-magenta);
+        }
+
+        .bstum-blue {
+            color: var(--primary-blue);
         }
 
         .heading-font {
@@ -73,18 +138,49 @@
         }
 
         .btn-primary {
-            @apply bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105;
+            background: var(--brand-gradient);
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--brand-magenta-dark) 0%, var(--brand-cyan-dark) 100%);
+            transform: scale(1.05);
         }
 
         .btn-secondary {
-            @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300;
+            border: 2px solid var(--brand-magenta);
+            color: var(--brand-magenta);
+            background: transparent;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--brand-magenta);
+            color: white;
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: var(--brand-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        .text-magenta {
+            color: var(--brand-magenta);
+        }
+
+        .text-cyan {
+            color: var(--brand-cyan);
         }
 
         .hero-section {
@@ -99,7 +195,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.8) 100%);
+            background: var(--brand-gradient);
+            opacity: 0.9;
             z-index: 1;
         }
 
@@ -125,55 +222,53 @@
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
-    <nav class="medical-gradient nav-shadow relative">
+    <nav class="brand-gradient nav-shadow relative">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <h1 class="text-2xl lg:text-3xl font-bold text-white heading-font flex items-center">
-                        <i class="fas fa-leaf text-green-400 mr-3"></i>
-                        Divine IV & Wellness
-                    </h1>
+                    <img src="/logo.svg" alt="Divine IV & Wellness Logo" class="h-10 mr-4">
+
                 </div>
                 <div class="hidden lg:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('home') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Amy Berkhout
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         About
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('services') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('services') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Services
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('page', 'photos') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('page', 'photos') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Photos
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('reviews') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('reviews') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Reviews
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Translate
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         VIP Rewards
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Resources
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('page', 'contact-us') }}" class="text-white hover:text-blue-200 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('page', 'contact-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Contact
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-200 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
                 </div>
                 <div class="lg:hidden">
@@ -191,7 +286,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="medical-gradient text-white">
+    <footer class="hero-gradient text-white">
         <div class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Contact Information -->

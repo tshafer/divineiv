@@ -6,24 +6,24 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="hero-section min-h-screen flex items-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600">
+<section class="hero-section min-h-screen flex items-center hero-gradient">
     <div class="hero-content max-w-7xl mx-auto px-4 lg:px-8 text-center text-white">
         <div class="max-w-4xl mx-auto">
             <!-- Logo/Brand -->
             <div class="flex items-center justify-center mb-8">
-                <i class="fas fa-leaf text-green-400 text-4xl mr-4"></i>
-                <span class="heading-font text-xl text-blue-200">Divine IV & Wellness</span>
+                <img src="/logo.svg" alt="Divine IV & Wellness Logo" class="h-16 mr-4">
+                <span class="heading-font text-xl text-cyan-300">Divine IV & Wellness</span>
             </div>
 
             <h1 class="heading-font text-5xl lg:text-7xl font-bold mb-6">
                 Med Spa
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-300">Chandler, AZ</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Chandler, AZ</span>
             </h1>
-            <h2 class="heading-font text-3xl lg:text-4xl mb-8 text-blue-100">
+            <h2 class="heading-font text-3xl lg:text-4xl mb-8 text-cyan-100">
                 Your Expression of Natural Beauty
             </h2>
 
-            <p class="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-blue-100">
+            <p class="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-white/90">
                 Welcome to Divine IV and Wellness. Led by Family Nurse Practitioner
                 <span class="font-semibold text-white">Amy Berkhout</span>,
                 our practice specializes in IV therapy, hormone replacement therapy,
@@ -32,12 +32,12 @@
 
             <!-- Modern CTA Buttons -->
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-                <a href="{{ route('services') }}" class="bg-white text-blue-600 px-10 py-5 rounded-full font-semibold text-lg hover:bg-blue-50 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center group">
-                    <i class="fas fa-star mr-3 text-blue-500"></i>
+                <a href="{{ route('services') }}" class="bg-white text-slate-700 px-10 py-5 rounded-full font-semibold text-lg hover:bg-white/90 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center group">
+                    <i class="fas fa-star mr-3 logo-cyan-highlight"></i>
                     Explore Our Services
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="{{ route('page', 'contact-us') }}" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-300 flex items-center group">
+                <a href="{{ route('page', 'contact-us') }}" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-slate-700 transform hover:scale-105 transition-all duration-300 flex items-center group">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Schedule Consultation
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
@@ -45,26 +45,26 @@
             </div>
 
             <!-- Trust Indicators -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-blue-400/30">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-cyan-300/30">
                 <div class="text-center">
                     <div class="text-3xl font-bold mb-2">5+ Years</div>
-                    <div class="text-blue-200">Experience</div>
+                    <div class="text-cyan-200">Experience</div>
                 </div>
                 <div class="text-center">
                     <div class="text-3xl font-bold mb-2">5.0★</div>
-                    <div class="text-blue-200">Rating</div>
+                    <div class="text-cyan-200">Rating</div>
                 </div>
                 <div class="text-center">
                     <div class="text-3xl font-bold mb-2">500+</div>
-                    <div class="text-blue-200">Happy Clients</div>
+                    <div class="text-cyan-200">Happy Clients</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Decorative Elements -->
-    <div class="absolute top-10 right-10 w-20 h-20 border-2 border-blue-300 rounded-full opacity-20 animate-pulse"></div>
-    <div class="absolute bottom-20 left-10 w-16 h-16 border-2 border-green-300 rounded-full opacity-20 animate-pulse delay-500"></div>
+    <div class="absolute top-10 right-10 w-20 h-20 border-2 border-cyan-300 rounded-full opacity-20 animate-pulse"></div>
+    <div class="absolute bottom-20 left-10 w-16 h-16 border-2 border-cyan-400 rounded-full opacity-20 animate-pulse delay-500"></div>
 </section>
 
 <!-- Services Section -->

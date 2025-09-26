@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="medical-gradient text-white py-20 lg:py-32 relative overflow-hidden">
+<section class="hero-gradient text-white py-20 lg:py-32 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
@@ -17,15 +17,15 @@
         <div class="max-w-4xl mx-auto">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
-                    <i class="fas fa-newspaper text-blue-200 mr-3"></i>
-                    <span class="text-blue-200 font-semibold">Latest Insights</span>
+                    <i class="fas fa-newspaper text-cyan-300 mr-3"></i>
+                    <span class="text-cyan-200 font-semibold">Latest Insights</span>
                 </div>
             </div>
             <h1 class="heading-font text-5xl lg:text-7xl font-bold mb-6">
                 Med Spa
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-400">Blog</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Blog</span>
             </h1>
-            <p class="text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            <p class="text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 leading-relaxed">
                 Stay informed with the latest insights on wellness, aesthetics, and treatments
                 from our expert medical team at Divine IV & Wellness.
             </p>

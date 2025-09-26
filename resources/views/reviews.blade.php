@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="medical-gradient text-white py-20 lg:py-32 relative overflow-hidden">
+<section class="hero-gradient text-white py-20 lg:py-32 relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
