@@ -5,73 +5,52 @@
 @section('description', 'Divine IV and Wellness located in Chandler, AZ. Led by Family Nurse Practitioner Amy Berkhout, specializing in IV therapy, hormone replacement therapy, weight loss, and aesthetic treatments.')
 
 @section('content')
-<!-- Hero Section -->
-<section class="hero-section min-h-screen flex items-center hero-gradient">
-    <div class="hero-content max-w-7xl mx-auto px-4 lg:px-8 text-center text-white">
-        <div class="max-w-4xl mx-auto">
-            <!-- Logo/Brand -->
-            <div class="flex items-center justify-center mb-8">
-                <img src="/logo.svg" alt="Divine IV & Wellness Logo" class="h-16 mr-4">
-                <span class="heading-font text-xl text-cyan-300">Divine IV & Wellness</span>
-            </div>
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    });
+</script>
 
-            <h1 class="heading-font text-5xl lg:text-7xl font-bold mb-6">
-                Med Spa
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Chandler, AZ</span>
-            </h1>
-            <h2 class="heading-font text-3xl lg:text-4xl mb-8 text-cyan-100">
-                Your Expression of Natural Beauty
-            </h2>
-
-            <p class="text-xl lg:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-white/90">
-                Welcome to Divine IV and Wellness. Led by Family Nurse Practitioner
-                <span class="font-semibold text-white">Amy Berkhout</span>,
-                our practice specializes in IV therapy, hormone replacement therapy,
-                weight loss, and cutting-edge aesthetic treatments.
-            </p>
-
-            <!-- Modern CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-                <a href="{{ route('services') }}" class="bg-white text-slate-700 px-10 py-5 rounded-full font-semibold text-lg hover:bg-white/90 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center group">
-                    <i class="fas fa-star mr-3 logo-cyan-highlight"></i>
-                    Explore Our Services
-                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-                <a href="{{ route('page', 'contact-us') }}" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-slate-700 transform hover:scale-105 transition-all duration-300 flex items-center group">
-                    <i class="fas fa-calendar-alt mr-3"></i>
-                    Schedule Consultation
-                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
-                </a>
-            </div>
-
-            <!-- Trust Indicators -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-cyan-300/30">
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">5+ Years</div>
-                    <div class="text-cyan-200">Experience</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">5.0★</div>
-                    <div class="text-cyan-200">Rating</div>
-                </div>
-                <div class="text-center">
-                    <div class="text-3xl font-bold mb-2">500+</div>
-                    <div class="text-cyan-200">Happy Clients</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Decorative Elements -->
-    <div class="absolute top-10 right-10 w-20 h-20 border-2 border-cyan-300 rounded-full opacity-20 animate-pulse"></div>
-    <div class="absolute bottom-20 left-10 w-16 h-16 border-2 border-cyan-400 rounded-full opacity-20 animate-pulse delay-500"></div>
-</section>
+<!-- Enhanced Hero Section -->
+<x-hero
+    title='Med Spa <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Chandler, AZ</span>'
+    :description="'Welcome to Divine IV and Wellness. Led by Family Nurse Practitioner Amy Berkhout, our practice specializes in IV therapy, hormone replacement therapy, weight loss, and cutting-edge aesthetic treatments.'"
+    :style="'min-height: 85vh;'"
+    :highlights="[
+        'badge_text' => 'Chandler Med Spa',
+        'cards' => [
+            [
+                'icon' => 'fas fa-star text-cyan-300 text-2xl mb-3',
+                'title' => 'Explore Services',
+                'content' => 'Transformative wellness solutions'
+            ],
+            [
+                'icon' => 'fas fa-calendar-check text-cyan-300 text-2xl mb-3',
+                'title' => 'Schedule Today',
+                'content' => 'Book your consultation'
+            ],
+            [
+                'icon' => 'fas fa-user-md text-cyan-300 text-2xl mb-3',
+                'title' => 'Expert Care',
+                'content' => 'Professional Amy Berkhout, FNP'
+            ]
+        ]
+    ]"
+/>
 
 <!-- Services Section -->
-<section class="py-20 bg-gradient-to-b from-slate-50 to-white">
+<section class="py-20 bg-gradient-to-b from-slate-50 to-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center bg-cyan-50 rounded-full px-6 py-3">
                     <i class="fas fa-medical-kit text-cyan-600 mr-3 text-lg"></i>
@@ -89,13 +68,19 @@
         </div>
 
         <!-- Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            @foreach($services as $service)
-            <div class="modern-card text-center group">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16" data-aos="fade-up" data-aos-delay="400">
+            @foreach($services as $index => $service)
+            <div class="modern-card text-center group" data-aos="fade-up" data-aos-delay="{{ 600 + ($index * 100) }}">
                 <div class="mb-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <i class="fas fa-heart text-white text-2xl"></i>
-                    </div>
+                    @if($service->icon)
+                        <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="{{ $service->icon }} text-white text-2xl"></i>
+                        </div>
+                    @else
+                        <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                            <i class="fas fa-heart text-white text-2xl"></i>
+                        </div>
+                    @endif
                     <h3 class="heading-font text-2xl font-semibold text-slate-800 mb-4">{{ $service->title }}</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">{{ $service->description }}</p>
                 </div>
@@ -108,8 +93,8 @@
         </div>
 
         <!-- Call to Action -->
-        <div class="text-center">
-            <a href="{{ route('services') }}" class="btn-primary group">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="800">
+            <a href="{{ route('services') }}" class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-8 py-4 rounded-full font-semibold hover:from-cyan-700 hover:to-cyan-800 transition-all duration-300 transform hover:scale-105 shadow-lg group">
                 <i class="fas fa-th-large mr-3"></i>
                 Explore All Treatments
                 <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
@@ -120,54 +105,52 @@
 
 <!-- About Section -->
 @if($aboutPage)
-<section class="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white relative overflow-hidden">
+<section class="py-20 hero-gradient text-white relative overflow-hidden" data-aos="fade-up">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 left-10 w-32 h-32 border border-white rounded-full"></div>
-        <div class="absolute bottom-20 right-10 w-24 h-24 border border-white rounded-full"></div>
-        <div class="absolute top-1/2 left-1/3 w-16 h-16 border border-white rounded-full"></div>
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full"></div>
+        <div class="absolute top-1/2 left-1/4 w-16 h-16 border border-white rounded-full"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" data-aos="fade-up" data-aos-delay="300">
             <!-- Content -->
             <div class="space-y-8">
-                <div class="space-y-4">
-                    <div class="flex items-center space-x-4 mb-6">
-                        <div class="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                            <i class="fas fa-user-md text-2xl"></i>
-                        </div>
-                        <div class="flex-1 border-l-4 border-green-400 pl-4">
-                            <h3 class="text-lg font-semibold text-blue-200">Family Nurse Practitioner</h3>
-                            <p class="text-blue-100">FNP-BC Certified</p>
-                        </div>
+                <div class="flex items-center space-x-4 mb-6" data-aos="fade-in" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-white bg-opacity-20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                        <i class="fas fa-user-md text-2xl text-white"></i>
+                    </div>
+                    <div class="border-l-4 border-green-400 pl-4">
+                        <h3 class="text-lg font-semibold text-green-100">Family Nurse Practitioner</h3>
+                        <p class="text-white/90">FNP-BC Certified</p>
                     </div>
                 </div>
 
-                <h2 class="heading-font text-4xl lg:text-6xl font-bold mb-6">
+                <h2 class="heading-font text-4xl lg:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-delay="500">
                     Meet
-                    <span class="text-yellow-300">Amy Berkhout</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Amy Berkhout</span>
                 </h2>
 
                 <div class="space-y-6 text-lg leading-relaxed">
-                    <p class="text-blue-100">
+                    <p class="text-blue-100" data-aos="fade-up" data-aos-delay="600">
                         Amy Berkhout, FNP-BC is a family nurse practitioner with extensive expertise in
                         <span class="font-semibold text-white">hormone replacement therapy</span>,
                         aesthetics, and IV infusion therapy.
                     </p>
-                    <p class="text-blue-100">
+                    <p class="text-blue-100" data-aos="fade-up" data-aos-delay="700">
                         Our Chandler, AZ practice helps patients achieve their personal aesthetic and wellness goals
                         through personalized, evidence-based treatments.
                     </p>
-                    <p class="text-blue-100">
+                    <p class="text-blue-100" data-aos="fade-up" data-aos-delay="800">
                         With decades of nursing experience and health promotion expertise, Amy delivers the
                         <span class="font-semibold text-white">distinguished level of care</span>
                         you deserve in luxury medical spa setting.
                     </p>
                 </div>
 
-                <div class="pt-6">
-                    <a href="{{ route('page', 'amy-berkhout') }}" class="btn-primary bg-white text-blue-600 hover:bg-blue-50 group inline-flex items-center">
+                <div class="pt-6" data-aos="fade-up" data-aos-delay="900">
+                    <a href="{{ route('page', 'amy-berkhout') }}" class="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg group inline-flex items-center">
                         <i class="fas fa-graduation-cap mr-3"></i>
                         Learn About Amy's Journey
                         <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
@@ -176,7 +159,7 @@
             </div>
 
             <!-- Profile Card -->
-            <div class="flex justify-center lg:justify-end">
+            <div class="flex justify-center lg:justify-end" data-aos="fade-left" data-aos-delay="500">
                 <div class="relative">
                     <!-- Professional Photo Placeholder -->
                     <div class="w-80 h-80 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl shadow-2xl flex items-center justify-center relative overflow-hidden group">
@@ -207,10 +190,10 @@
 @endif
 
 <!-- Reviews Section -->
-<section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+<section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center bg-yellow-100 rounded-full px-6 py-3">
                     <i class="fas fa-star text-yellow-500 mr-3"></i>
@@ -220,7 +203,7 @@
             <h2 class="heading-font text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
                 What Our Clients Say
             </h2>
-            <div class="flex justify-center items-center mb-8">
+            <div class="flex justify-center items-center mb-8" data-aos="fade-up" data-aos-delay="400">
                 <div class="flex text-yellow-400 text-3xl mr-6">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -237,9 +220,9 @@
         </div>
 
         <!-- Reviews Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            @foreach($reviews as $review)
-            <div class="modern-card text-center group">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="600">
+            @foreach($reviews as $index => $review)
+            <div class="modern-card text-center group" data-aos="fade-up" data-aos-delay="{{ 800 + ($index * 200) }}">
                 <!-- Stars -->
                 <div class="flex justify-center text-yellow-400 mb-6">
                     @for($i = 0; $i < $review->rating; $i++)
@@ -275,8 +258,8 @@
         </div>
 
         <!-- Call to Action -->
-        <div class="text-center">
-            <a href="{{ route('reviews') }}" class="btn-primary group inline-flex items-center">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="1000">
+            <a href="{{ route('reviews') }}" class="inline-flex items-center bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-8 py-4 rounded-full font-semibold hover:from-cyan-700 hover:to-cyan-800 transition-all duration-300 transform hover:scale-105 shadow-lg group">
                 <i class="fas fa-comments mr-3"></i>
                 Read All Testimonials
                 <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
@@ -286,35 +269,36 @@
 </section>
 
 <!-- Contact Section -->
-<section class="py-20 medical-gradient text-white relative overflow-hidden">
+<section class="py-20 hero-gradient text-white relative overflow-hidden" data-aos="fade-up">
     <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-10 right-20 w-40 h-40 border border-white rounded-full"></div>
-        <div class="absolute bottom-10 left-20 w-32 h-32 border border-white rounded-full"></div>
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full"></div>
+        <div class="absolute top-1/2 right-1/4 w-16 h-16 border border-white rounded-full"></div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
         <!-- Section Header -->
-        <div class="text-center mb-16">
+        <div class="text-center mb-16" data-aos="fade-up" data-aos-delay="200">
             <div class="flex justify-center mb-6">
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
-                    <i class="fas fa-map-marker-alt text-blue-200 mr-3"></i>
-                    <span class="text-blue-200 font-semibold">Contact Our Team</span>
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 backdrop-blur-sm">
+                    <div class="w-6 h-6 bg-cyan-300 rounded-full mr-3"></div>
+                    <span class="text-cyan-200 font-semibold">Contact Our Team</span>
                 </div>
             </div>
-            <h2 class="heading-font text-4xl lg:text-6xl font-bold mb-6">
+            <h2 class="heading-font text-4xl lg:text-6xl font-bold mb-6" data-aos="fade-up" data-aos-delay="300">
                 Ready to Start Your
-                <span class="text-yellow-300">Wellness Journey?</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Wellness Journey?</span>
             </h2>
-            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="500">
                 Get in touch with our Chandler office to schedule your personalized consultation
                 and discover how we can help you achieve your wellness goals.
             </p>
         </div>
 
         <!-- Contact Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div class="modern-card bg-white bg-opacity-10 text-center group">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="700">
+            <div class="modern-card bg-white bg-opacity-10 text-center group backdrop-blur-sm">
                 <div class="w-20 h-20 bg-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-map-marker-alt text-blue-900 text-2xl"></i>
                 </div>
@@ -325,7 +309,7 @@
                 </div>
             </div>
 
-            <div class="modern-card bg-white bg-opacity-10 text-center group">
+            <div class="modern-card bg-white bg-opacity-10 text-center group backdrop-blur-sm">
                 <div class="w-20 h-20 bg-green-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-phone text-white text-2xl"></i>
                 </div>
@@ -335,7 +319,7 @@
                 </a>
             </div>
 
-            <div class="modern-card bg-white bg-opacity-10 text-center group">
+            <div class="modern-card bg-white bg-opacity-10 text-center group backdrop-blur-sm">
                 <div class="w-20 h-20 bg-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                     <i class="fas fa-calendar-alt text-white text-2xl"></i>
                 </div>
@@ -347,17 +331,17 @@
         </div>
 
         <!-- Call to Action -->
-        <div class="text-center">
+        <div class="text-center" data-aos="fade-up" data-aos-delay="900">
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('contact') }}" class="btn-primary bg-white text-blue-600 hover:bg-blue-50 group inline-flex items-center">
+                <a href="{{ route('contact') }}" class="bg-white text-blue-600 px-10 py-5 rounded-full font-semibold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center group">
                     <i class="fas fa-envelope mr-3"></i>
                     Send Us a Message
-                    <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="tel:480-488-9858" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-600 group inline-flex items-center">
+                <a href="tel:480-488-9858" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center group">
                     <i class="fas fa-phone mr-3"></i>
                     Call Now: (480) 488-9858
-                    <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>
+                    <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
             </div>
         </div>
