@@ -142,7 +142,7 @@
                 transform: translateY(0);
             }
             50% {
-                transform: translateY(-10px);
+                transform: translateY(-5px);
             }
         }
 
@@ -150,11 +150,8 @@
             0%, 100% {
                 transform: translateY(0) rotate(0deg);
             }
-            33% {
-                transform: translateY(-10px) rotate(120deg);
-            }
-            66% {
-                transform: translateY(-5px) rotate(240deg);
+            50% {
+                transform: translateY(-8px) rotate(180deg);
             }
         }
 
@@ -196,7 +193,7 @@
         }
 
         .animate-card-float {
-            animation: card-float 3s ease-in-out infinite;
+            animation: card-float 2s ease-in-out;
         }
 
         /* Enhanced hover effects */
@@ -362,10 +359,13 @@
     <!-- Navigation -->
     <nav class="brand-gradient nav-shadow relative">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex justify-between items-center py-4">
+            <div class="flex justify-between items-center py-6">
+                <!-- Enhanced Logo & Brand -->
                 <div class="flex items-center">
-                    <img src="/logo.svg" alt="Divine IV & Wellness Logo" class="h-10 mr-4">
+                    <a href="{{ route('home') }}" class="flex items-center group">
+                        <img src="/logo.svg" alt="Divine IV & Wellness Logo" class="h-16 mr-4 group-hover:scale-110 transition-transform duration-300">
 
+                    </a>
                 </div>
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="{{ route('home') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">

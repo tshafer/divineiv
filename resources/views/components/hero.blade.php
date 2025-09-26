@@ -19,18 +19,18 @@
     data-aos="fade-up"
     data-aos-duration="1000"
 >
-    <!-- Animated Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full animate-pulse"></div>
-        <div class="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full animate-bounce" style="animation-delay: 1s;"></div>
-        <div class="absolute top-1/2 right-1/4 w-16 h-16 border border-white rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+    <!-- Subtle Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
+        <div class="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full"></div>
+        <div class="absolute top-1/2 right-1/4 w-16 h-16 border border-white rounded-full"></div>
         <!-- Floating elements -->
-        <div class="absolute top-1/3 left-1/3 w-8 h-8 border border-cyan-300 rounded-full animate-pulse opacity-60"></div>
-        <div class="absolute bottom-1/3 right-1/3 w-12 h-12 border border-cyan-300 rounded-full animate-bounce opacity-60" style="animation-delay: 0.5s;"></div>
+        <div class="absolute top-1/3 left-1/3 w-8 h-8 border border-cyan-300 rounded-full opacity-40"></div>
+        <div class="absolute bottom-1/3 right-1/3 w-12 h-12 border border-cyan-300 rounded-full opacity-40"></div>
     </div>
 
-    <!-- Animated overlay gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 via-transparent to-cyan-600/20 animate-pulse"></div>
+    <!-- Subtle overlay gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 via-transparent to-cyan-600/10"></div>
 
     <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center relative z-10">
         <div class="max-w-4xl mx-auto">
@@ -44,7 +44,7 @@
                     data-aos="fade-in"
                     data-aos-delay="200"
                 >
-                    <div class="w-6 h-6 bg-cyan-300 rounded-full mr-3 animate-pulse"></div>
+                    <div class="w-6 h-6 bg-cyan-300 rounded-full mr-3"></div>
                     @if(isset($highlights['badge_text']))
                         <span class="text-cyan-200 font-semibold">{{ $highlights['badge_text'] }}</span>
                     @else
@@ -116,8 +116,7 @@
                         $iconClass = 'text-slate-700';
                     }
                 @endphp
-                <i class="{{ $button['icon'] }} mr-3 {{ $iconClass }}
-                         group-hover:rotate-12 transition-transform duration-300"></i>
+                <i class="{{ $button['icon'] }} mr-3 {{ $iconClass }} group-hover:rotate-12 transition-transform duration-300"></i>
                 @endif
                     {{ $button['text'] }}
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
