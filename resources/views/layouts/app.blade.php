@@ -205,19 +205,6 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Gradient shine animation */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            animation: shine 3s infinite;
-            pointer-events: none;
-        }
-
         /* Contact Page Specific Animations */
         .contact-page-map {
             transition: all 0.3s ease;
