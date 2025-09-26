@@ -5,13 +5,26 @@
 @section('description', 'Contact Divine IV and Wellness in Chandler, AZ. Schedule your consultation today and start your wellness journey with our expert medical spa team.')
 
 @section('content')
+<!-- AOS Animation Library -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-in-out'
+        });
+    });
+</script>
 <!-- Enhanced Contact Map -->
 <script>
     let map;
-    
+
     function initMap() {
         const chandlerLocation = { lat: 33.2488454, lng: -111.8658575 };
-        
+
         map = new google.maps.Map(document.getElementById("contact-map"), {
             zoom: 16,
             center: chandlerLocation,
@@ -65,81 +78,73 @@
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap"></script>
 
-<!-- Hero Section -->
-<section class="hero-gradient text-white py-20 lg:py-32 relative overflow-hidden">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-20 right-20 w-32 h-32 border border-white rounded-full"></div>
-        <div class="absolute bottom-20 left-20 w-24 h-24 border border-white rounded-full"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center relative z-10">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex justify-center mb-6">
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
-                    <i class="fas fa-envelope text-cyan-300 mr-3"></i>
-                    <span class="text-cyan-200 font-semibold">Connect With Us</span>
-                </div>
-            </div>
-            <h1 class="heading-font text-5xl lg:text-7xl font-bold mb-6">
-                Contact 
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Divine IV & Wellness</span>
-            </h1>
-            <p class="text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 leading-relaxed">
-                Ready to start your wellness journey? Contact our professional team to schedule your consultation 
-                and discover how we can help you achieve your health and beauty goals.
-            </p>
-            
-            <!-- Quick Contact Highlights -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="bg-white bg-opacity-10 rounded-lg p-6">
-                    <i class="fas fa-phone text-cyan-300 text-2xl mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">Call Us</h3>
-                    <p class="text-cyan-100">(480) 488-9858</p>
-                </div>
-                <div class="bg-white bg-opacity-10 rounded-lg p-6">
-                    <i class="fas fa-envelope text-cyan-300 text-2xl mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">Email Us</h3>
-                    <p class="text-cyan-100">info@divineiv.com</p>
-                </div>
-                <div class="bg-white bg-opacity-10 rounded-lg p-6">
-                    <i class="fas fa-map-marker-alt text-cyan-300 text-2xl mb-3"></i>
-                    <h3 class="text-xl font-semibold mb-2">Visit Us</h3>
-                    <p class="text-cyan-100">Chandler, AZ</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!-- Enhanced Hero Section -->
+<x-hero
+    title='Contact <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Divine IV & Wellness</span>'
+    subtitle=""
+    description="Ready to start your wellness journey? Contact our professional team to schedule your consultation and discover how we can help you achieve your health and beauty goals."
+    class="hero-section"
+    :highlights="[
+        'badge_text' => 'Connect With Us',
+        'cards' => [
+            [
+                'icon' => 'fas fa-phone text-cyan-300 text-2xl mb-3',
+                'title' => 'Call Us',
+                'content' => '(480) 488-9858'
+            ],
+            [
+                'icon' => 'fas fa-envelope text-cyan-300 text-2xl mb-3',
+                'title' => 'Email Us',
+                'content' => 'info@divineiv.com'
+            ],
+            [
+                'icon' => 'fas fa-map-marker-alt text-cyan-300 text-2xl mb-3',
+                'title' => 'Visit Us',
+                'content' => 'Chandler, AZ'
+            ]
+        ]
+    ]"
+/>
 
 <!-- Interactive Map Section -->
-<section class="py-16 bg-gradient-to-b from-slate-50 to-white">
+<section class="py-16 bg-gradient-to-b from-slate-50 to-white" data-aos="fade-up">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="heading-font text-4xl font-bold text-slate-800 mb-4">Find Our Chandler Location</h2>
+        <div class="text-center mb-12" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="heading-font text-4xl font-bold text-slate-800 mb-4 animate-fade-in-up">Find Our Chandler Location</h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Located in the heart of Chandler, Arizona, we're easy to find and conveniently accessible 
+                Located in the heart of Chandler, Arizona, we're easy to find and conveniently accessible
                 for your wellness appointments.
             </p>
         </div>
-        
-        <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-cyan-100">
+
+        <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-cyan-100 contact-page-map
+                    hover:shadow-2xl transform transition-all duration-500 hover:scale-105"
+             data-aos="zoom-in" data-aos-delay="400">
             <div id="contact-map" class="w-full h-96"></div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
-                <i class="fas fa-car text-cyan-600 text-3xl mb-3"></i>
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg contact-card-hover animate-fade-in-up"
+                 data-aos="fade-up" data-aos-delay="600">
+                <div class="inline-block">
+                    <i class="fas fa-car text-cyan-600 text-3xl mb-3 animate-bounce" style="animation-delay: 0s;"></i>
+                </div>
                 <h3 class="font-semibold text-gray-800 mb-2">Free Parking</h3>
                 <p class="text-gray-600 text-sm">Convenient parking available</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
-                <i class="fas fa-wheelchair text-cyan-600 text-3xl mb-3"></i>
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg contact-card-hover animate-fade-in-up"
+                 data-aos="fade-up" data-aos-delay="700">
+                <div class="inline-block">
+                    <i class="fas fa-wheelchair text-cyan-600 text-3xl mb-3 animate-bounce" style="animation-delay: 0.3s;"></i>
+                </div>
                 <h3 class="font-semibold text-gray-800 mb-2">Accessible</h3>
                 <p class="text-gray-600 text-sm">Wheelchair accessible entrance</p>
             </div>
-            <div class="text-center p-6 bg-white rounded-lg shadow-lg">
-                <i class="fas fa-clock text-cyan-600 text-3xl mb-3"></i>
+            <div class="text-center p-6 bg-white rounded-lg shadow-lg contact-card-hover animate-fade-in-up"
+                 data-aos="fade-up" data-aos-delay="800">
+                <div class="inline-block">
+                    <i class="fas fa-clock text-cyan-600 text-3xl mb-3 animate-bounce" style="animation-delay: 0.6s;"></i>
+                </div>
                 <h3 class="font-semibold text-gray-800 mb-2">Flexible Hours</h3>
                 <p class="text-gray-600 text-sm">Open Monday-Friday</p>
             </div>
@@ -148,17 +153,17 @@
 </section>
 
 <!-- Contact Form & Information -->
-<section class="py-20 bg-white">
+<section class="py-20 bg-white" data-aos="fade-up" id="main-content">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+
             <!-- Enhanced Contact Form -->
             <div>
                 <div class="modern-card">
                     <div class="mb-8">
                         <h2 class="heading-font text-3xl font-bold text-slate-800 mb-4">Send Us a Message</h2>
                         <p class="text-gray-600 mb-6">Tell us about your wellness goals and we'll get back to you quickly.</p>
-                        
+
                         <!-- Form Progress Indicator -->
                         <div class="flex items-center space-x-2 mb-6">
                             <div class="flex items-center">
@@ -194,18 +199,18 @@
 
                     <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
                         @csrf
-                        
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Full Name <span class="text-red-500">*</span>
                                 </label>
-                                <input 
-                                    type="text" 
-                                    id="name" 
-                                    name="name" 
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
                                     value="{{ old('name') }}"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                     placeholder="Your full name"
                                     required
                                 >
@@ -218,12 +223,12 @@
                                 <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Email <span class="text-red-500">*</span>
                                 </label>
-                                <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
                                     value="{{ old('email') }}"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                     placeholder="your.email@example.com"
                                     required
                                 >
@@ -238,12 +243,12 @@
                                 <label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Phone Number
                                 </label>
-                                <input 
-                                    type="tel" 
-                                    id="phone" 
-                                    name="phone" 
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
                                     value="{{ old('phone') }}"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300" 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                     placeholder="(480) 555-0123"
                                 >
                                 @error('phone')
@@ -255,10 +260,10 @@
                                 <label for="patient_status" class="block text-sm font-semibold text-gray-700 mb-2">
                                     Patient Status
                                 </label>
-                                <select 
-                                    id="patient_status" 
+                                <select
+                                    id="patient_status"
                                     name="patient_status"
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300"
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                 >
                                     <option value="">Select status...</option>
                                     <option value="new" {{ old('patient_status') == 'new' ? 'selected' : '' }}>New Patient</option>
@@ -275,12 +280,12 @@
                             <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Subject
                             </label>
-                            <input 
-                                type="text" 
-                                id="subject" 
-                                name="subject" 
+                            <input
+                                type="text"
+                                id="subject"
+                                name="subject"
                                 value="{{ old('subject') }}"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                 placeholder="Consultation, Service Inquiry, etc."
                             >
                             @error('subject')
@@ -292,11 +297,11 @@
                             <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">
                                 Message <span class="text-red-500">*</span>
                             </label>
-                            <textarea 
-                                id="message" 
-                                name="message" 
+                            <textarea
+                                id="message"
+                                name="message"
                                 rows="6"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition duration-300" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg contact-form-field focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500"
                                 placeholder="Tell us about your wellness goals and how we can help you..."
                                 required
                             >{{ old('message') }}</textarea>
@@ -306,7 +311,7 @@
                         </div>
 
                         <div>
-                            <button 
+                            <button
                                 type="submit"
                                 class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold py-4 px-8 rounded-lg hover:from-cyan-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg flex items-center justify-center group"
                             >
@@ -333,8 +338,8 @@
                                 <div class="ml-4">
                                     <h4 class="font-semibold text-gray-800 text-lg">Address</h4>
                                     <p class="text-gray-600">3930 S Alma School Rd Suite 10<br>Chandler, AZ 85248</p>
-                                    <a href="https://maps.google.com/maps?q=3930+S+Alma+School+Rd+Suite+10+Chandler+AZ+85248" 
-                                       target="_blank" 
+                                    <a href="https://maps.google.com/maps?q=3930+S+Alma+School+Rd+Suite+10+Chandler+AZ+85248"
+                                       target="_blank"
                                        class="text-cyan-600 hover:text-cyan-700 text-sm font-medium transition-colors mt-1 inline-block">
                                         <i class="fas fa-external-link-alt mr-1"></i>Get Directions
                                     </a>

@@ -111,6 +111,144 @@
             color: var(--primary-blue);
         }
 
+        /* Enhanced CSS Animations for Hero & Components */
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes card-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-10px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(-5px) rotate(240deg);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%);
+            }
+            50% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Hero Component Animations */
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+        }
+
+        .animate-text {
+            animation: fade-in-up 1s ease-out forwards;
+        }
+
+        .animate-title {
+            animation: float-in-up 1.2s ease-out forwards;
+        }
+
+        .animate-subtitle {
+            animation: fade-in-up 1.4s ease-out forwards;
+        }
+
+        .animate-buttons {
+            animation: fade-in-up 1.6s ease-out forwards;
+        }
+
+        .animate-cards {
+            animation: fade-in-up 1.8s ease-out forwards;
+        }
+
+        .animate-card-float {
+            animation: card-float 3s ease-in-out infinite;
+        }
+
+        /* Enhanced hover effects */
+        .hero-section .backdrop-blur-sm {
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-section .absolute .border {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Gradient shine animation */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+            pointer-events: none;
+        }
+
+        /* Contact Page Specific Animations */
+        .contact-page-map {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .contact-page-map:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-form-field {
+            transition: all 0.3s ease;
+        }
+
+        .contact-form-field:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(8, 145, 178, 0.2);
+        }
+
+        .contact-card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .contact-card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
         .heading-font {
             font-family: 'Playfair Display', serif;
         }
