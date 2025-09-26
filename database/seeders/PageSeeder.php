@@ -16,10 +16,11 @@ class PageSeeder extends Seeder
             [
                 'title' => 'About Us',
                 'slug' => 'about-us',
-                'content' => 'Welcome to Divine IV and Wellness located in Chandler, AZ. Led by Family Nurse Practitioner Amy Berkhout, our practice specializes in IV therapy, hormone replacement therapy, weight loss, thyroid disorder, RF skin tightening and dermabrasion. We are dedicated to offering patient-focused care while using advanced techniques and technologies to achieve that objective. Our team looks forward to getting to know patients from the Chandler, Gilbert, Mesa and Queen Creek, AZ area. Book your consultation at our office today.',
-                'excerpt' => 'Welcome to Divine IV and Wellness located in Chandler, AZ. Led by Family Nurse Practitioner Amy Berkhout, our practice specializes in IV therapy, hormone replacement therapy, weight loss, thyroid disorder, RF skin tightening and dermabrasion.',
+                'content' => 'Welcome to Divine IV and Wellness based in Chandler, AZ. We are excited to provide Chandler, Gilbert, Mesa and Queen Creek, AZ patients with spectacular patient service and ideal aesthetic outcomes by utilizing high-quality products and advanced techniques. Working alongside family nurse practitioner Amy Berkhout, our team is dedicated to creating a gender-inclusive environment and will prioritize your comfort and goals ahead of everything else. Specializing in hormone replacement therapy, and IV therapy, microneedling, pulsed electromagnetic field therapy (PEMF), hair restoration and weight loss, our team will partner with you to build a detailed treatment plan that works for you. Connect with our office today to embark on your wellness journey.',
+                'excerpt' => 'Welcome to Divine IV and Wellness based in Chandler, AZ. We are excited to provide patients with spectacular service and ideal aesthetic outcomes by utilizing high-quality products and advanced techniques.',
                 'meta_title' => 'About Divine IV and Wellness - Chandler, AZ Med Spa',
                 'meta_description' => 'Learn about Divine IV and Wellness, a Chandler, AZ med spa led by Family Nurse Practitioner Amy Berkhout specializing in IV therapy, hormone replacement therapy, and aesthetic treatments.',
+                'featured_image' => '/images/about-masthead.png',
                 'active' => true,
             ],
             [
@@ -43,7 +44,7 @@ class PageSeeder extends Seeder
         ];
 
         foreach ($pages as $page) {
-            Page::create($page);
+            Page::updateOrCreate(['slug' => $page['slug']], $page);
         }
     }
 }

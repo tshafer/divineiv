@@ -6,6 +6,17 @@
 
 @section('content')
 <!-- Hero Section -->
+@if($page->featured_image)
+<section class="relative bg-cover bg-center bg-no-repeat py-20" style="background-image: url('{{ $page->featured_image }}'); min-height: 400px;">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 text-center text-white">
+        <h1 class="text-5xl font-bold mb-6">{{ $page->title }}</h1>
+        @if($page->excerpt)
+        <p class="text-xl mb-8 max-w-3xl mx-auto">{{ $page->excerpt }}</p>
+        @endif
+    </div>
+</section>
+@else
 <section class="gradient-bg text-white py-20">
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h1 class="text-5xl font-bold mb-6">{{ $page->title }}</h1>
@@ -14,6 +25,7 @@
         @endif
     </div>
 </section>
+@endif
 
 <!-- Page Content -->
 <section class="py-16 bg-white">
@@ -26,8 +38,44 @@
     </div>
 </section>
 
+<!-- Special Navigation Cards for About Us Page -->
+@if($page->slug === 'about-us')
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Our Provider Card -->
+            <a href="{{ route('page', 'amy-berkhout') }}" class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/our-provider.png');"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Our Provider</h3>
+                    <p class="text-gray-600">Meet Amy Berkhout, FNP-BC and our team of experts.</p>
+                </div>
+            </a>
+
+            <!-- Our Services Card -->
+            <a href="{{ route('services') }}" class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/our-services.png');"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Our Services</h3>
+                    <p class="text-gray-600">Explore our comprehensive range of wellness treatments.</p>
+                </div>
+            </a>
+
+            <!-- Our Office Card -->
+            <a href="{{ route('page', 'contact-us') }}" class="group bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <div class="h-48 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/our-office.png');"></div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">Our Office</h3>
+                    <p class="text-gray-600">Visit our modern facility in Chandler, AZ.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+@endif
+
 <!-- Call to Action -->
-@if($page->slug !== 'contact-us')
+@if($page->slug !== 'contact-us' && $page->slug !== 'about-us')
 <section class="py-16 bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 text-center">
         <h2 class="text-4xl font-bold text-gray-800 mb-6">Ready to Get Started?</h2>

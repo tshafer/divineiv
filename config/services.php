@@ -40,11 +40,13 @@ return [
             'api_key' => env('GOOGLE_PLACES_API_KEY'),
             'place_id' => env('GOOGLE_PLACES_PLACE_ID'),
         ],
+        'business_url' => env('GOOGLE_BUSINESS_URL'), // e.g., https://g.co.business.example.com or https://maps.google.com/maps?cid=xyz
     ],
 
     'yelp' => [
         'api_key' => env('YELP_API_KEY'),
         'business_id' => env('YELP_BUSINESS_ID'),
+        'business_url' => env('YELP_BUSINESS_URL'), // e.g., https://www.yelp.com/biz/your-business-name
     ],
 
 ];
