@@ -35,4 +35,16 @@ return [
         ],
     ],
 
+    'google' => [
+        'places' => [
+            'api_key' => env('GOOGLE_PLACES_API_KEY'),
+            'place_id' => env('GOOGLE_PLACES_PLACE_ID'),
+        ],
+    ],
+
+    'yelp' => [
+        'api_key' => env('YELP_API_KEY'),
+        'business_id' => env('YELP_BUSINESS_ID'),
+    ],
+
 ];

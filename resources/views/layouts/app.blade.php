@@ -367,48 +367,11 @@
 
                     </a>
                 </div>
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Home
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Amy Berkhout
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('page', 'about-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        About
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('services') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Services
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('page', 'photos') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Photos
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('reviews') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Reviews
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Translate
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        VIP Rewards
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="#" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Resources
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="{{ route('contact') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
-                        Contact
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                </div>
+                <!-- Dynamic Navigation -->
+                <x-dynamic-navigation
+                    class="hidden lg:flex items-center space-x-8"
+                    linkClass="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group"
+                />
                 <div class="lg:hidden">
                     <button class="text-white hover:text-blue-200 p-2 rounded-lg hover:bg-blue-500/20 transition-all duration-300">
                         <i class="fas fa-bars text-xl"></i>
@@ -455,23 +418,42 @@
                 <!-- Quick Links -->
                 <div class="space-y-4">
                     <h3 class="text-2xl font-bold heading-font mb-6">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="{{ route('home') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Home
-                        </a></li>
-                        <li><a href="{{ route('services') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Services
-                        </a></li>
-                        <li><a href="{{ route('blog') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Blog
-                        </a></li>
-                        <li><a href="{{ route('reviews') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Reviews
-                        </a></li>
-                        <li><a href="{{ route('page', 'about-us') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>About Us
-                        </a></li>
-                    </ul>
+                    <!-- Dynamic Footer Navigation -->
+                    @php
+                        $footerMenus = \App\Models\Menu::published()->parentItems()->ordered()->limit(5)->get();
+                    @endphp
+
+                    @if($footerMenus->count() > 0)
+                        <ul class="space-y-3">
+                            @foreach($footerMenus as $menu)
+                                @php
+                                    $isActive = \App\Helpers\MenuHelper::isMenuItemActive($menu);
+                                @endphp
+                                <li><a href="{{ $menu->full_url }}" class="{{ $isActive ? 'text-white font-medium' : 'text-blue-100' }} hover:text-white transition-colors duration-300 flex items-center group" target="{{ $menu->target ?? '_self' }}">
+                                    <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>{{ $menu->title }}
+                                </a></li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <!-- Fallback to hardcoded links -->
+                        <ul class="space-y-3">
+                            <li><a href="{{ route('home') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
+                                <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Home
+                            </a></li>
+                            <li><a href="{{ route('services') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
+                                <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Services
+                            </a></li>
+                            <li><a href="{{ route('blog') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
+                                <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Blog
+                            </a></li>
+                            <li><a href="{{ route('reviews') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
+                                <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>Reviews
+                            </a></li>
+                            <li><a href="{{ route('page', 'about-us') }}" class="text-blue-100 hover:text-white transition-colors duration-300 flex items-center group">
+                                <i class="fas fa-arrow-right text-blue-300 mr-2 text-sm transform group-hover:translate-x-1 transition-transform"></i>About Us
+                            </a></li>
+                        </ul>
+                    @endif
                 </div>
 
                 <!-- Social Media -->
