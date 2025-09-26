@@ -2,18 +2,19 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use App\Models\Page;
-use App\Models\Service;
-use App\Models\Review;
 use App\Models\Gallery;
+use App\Models\Page;
+use App\Models\Review;
+use App\Models\Service;
 use DOMDocument;
 use DOMXPath;
+use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
 class ImportHtmlContent extends Command
 {
     protected $signature = 'import:html-content {--path=divineiv.com}';
+
     protected $description = 'Import HTML content from divineiv.com directory into Laravel models';
 
     public function handle()
@@ -22,36 +23,39 @@ class ImportHtmlContent extends Command
             $path = $this->option('path');
             $fullPath = base_path($path);
 
-            if (!is_dir($fullPath)) {
+            if (! is_dir($fullPath)) {
                 $this->error("Directory {$fullPath} does not exist!");
+
                 return 1;
             }
 
             $this->info("Starting HTML content import from {$fullPath}...");
 
-        // Import different types of content
-        $this->importPages($fullPath);
-        $this->importBlogPosts($fullPath);
-        $this->importServices($fullPath);
-        $this->importReviews($fullPath);
-        $this->importGalleries($fullPath);
-        
-        // Import any remaining HTML files
-        $this->importRemainingFiles($fullPath);
+            // Import different types of content
+            $this->importPages($fullPath);
+            $this->importBlogPosts($fullPath);
+            $this->importServices($fullPath);
+            $this->importReviews($fullPath);
+            $this->importGalleries($fullPath);
 
-            $this->info("HTML content import completed!");
+            // Import any remaining HTML files
+            $this->importRemainingFiles($fullPath);
+
+            $this->info('HTML content import completed!');
+
             return 0;
         } catch (\Exception $e) {
-            $this->error("Error during import: " . $e->getMessage());
-            $this->error("File: " . $e->getFile() . " Line: " . $e->getLine());
-            $this->error("Stack trace: " . $e->getTraceAsString());
+            $this->error('Error during import: '.$e->getMessage());
+            $this->error('File: '.$e->getFile().' Line: '.$e->getLine());
+            $this->error('Stack trace: '.$e->getTraceAsString());
+
             return 1;
         }
     }
 
     private function importPages($basePath)
     {
-        $this->info("Importing static pages...");
+        $this->info('Importing static pages...');
 
         $pageFiles = [
             'index.html' => 'Home',
@@ -79,7 +83,7 @@ class ImportHtmlContent extends Command
         ];
 
         foreach ($pageFiles as $file => $title) {
-            $filePath = $basePath . '/' . $file;
+            $filePath = $basePath.'/'.$file;
             if (file_exists($filePath)) {
                 $this->importPage($filePath, $title, $file);
             }
@@ -88,17 +92,18 @@ class ImportHtmlContent extends Command
 
     private function importBlogPosts($basePath)
     {
-        $this->info("Importing blog posts...");
+        $this->info('Importing blog posts...');
 
-        $blogPath = $basePath . '/med-spa-blog';
-        if (!is_dir($blogPath)) {
+        $blogPath = $basePath.'/med-spa-blog';
+        if (! is_dir($blogPath)) {
             $this->warn("Blog directory not found: {$blogPath}");
+
             return;
         }
 
-        $files = glob($blogPath . '/*.html');
-        $this->info("Found " . count($files) . " blog files");
-        
+        $files = glob($blogPath.'/*.html');
+        $this->info('Found '.count($files).' blog files');
+
         foreach ($files as $file) {
             $filename = basename($file);
             $this->info("Processing blog file: {$filename}");
@@ -110,11 +115,12 @@ class ImportHtmlContent extends Command
 
     private function importServices($basePath)
     {
-        $this->info("Importing services...");
+        $this->info('Importing services...');
 
-        $servicesPath = $basePath . '/services';
-        if (!is_dir($servicesPath)) {
+        $servicesPath = $basePath.'/services';
+        if (! is_dir($servicesPath)) {
             $this->warn("Services directory not found: {$servicesPath}");
+
             return;
         }
 
@@ -123,7 +129,7 @@ class ImportHtmlContent extends Command
 
     private function importServicesRecursively($path, $category = null)
     {
-        $files = glob($path . '/*.html');
+        $files = glob($path.'/*.html');
         foreach ($files as $file) {
             $filename = basename($file);
             if ($filename !== 'services.html') {
@@ -132,7 +138,7 @@ class ImportHtmlContent extends Command
         }
 
         // Process subdirectories
-        $dirs = glob($path . '/*', GLOB_ONLYDIR);
+        $dirs = glob($path.'/*', GLOB_ONLYDIR);
         foreach ($dirs as $dir) {
             $categoryName = basename($dir);
             $this->importServicesRecursively($dir, $categoryName);
@@ -141,10 +147,10 @@ class ImportHtmlContent extends Command
 
     private function importReviews($basePath)
     {
-        $this->info("Importing reviews...");
+        $this->info('Importing reviews...');
 
         // Extract reviews from the homepage testimonials
-        $homepagePath = $basePath . '/index.html';
+        $homepagePath = $basePath.'/index.html';
         if (file_exists($homepagePath)) {
             $this->importReviewsFromHomepage($homepagePath);
         }
@@ -152,11 +158,12 @@ class ImportHtmlContent extends Command
 
     private function importGalleries($basePath)
     {
-        $this->info("Importing galleries...");
+        $this->info('Importing galleries...');
 
-        $galleriesPath = $basePath . '/galleries';
-        if (!is_dir($galleriesPath)) {
+        $galleriesPath = $basePath.'/galleries';
+        if (! is_dir($galleriesPath)) {
             $this->warn("Galleries directory not found: {$galleriesPath}");
+
             return;
         }
 
@@ -165,7 +172,7 @@ class ImportHtmlContent extends Command
 
     private function importGalleriesRecursively($path, $category = null)
     {
-        $files = glob($path . '/*.html');
+        $files = glob($path.'/*.html');
         foreach ($files as $file) {
             $filename = basename($file);
             if ($filename !== 'galleries.html') {
@@ -174,7 +181,7 @@ class ImportHtmlContent extends Command
         }
 
         // Process subdirectories
-        $dirs = glob($path . '/*', GLOB_ONLYDIR);
+        $dirs = glob($path.'/*', GLOB_ONLYDIR);
         foreach ($dirs as $dir) {
             $categoryName = basename($dir);
             $this->importGalleriesRecursively($dir, $categoryName);
@@ -183,39 +190,39 @@ class ImportHtmlContent extends Command
 
     private function importRemainingFiles($basePath)
     {
-        $this->info("Importing any remaining HTML files...");
-        
+        $this->info('Importing any remaining HTML files...');
+
         // Find all HTML files recursively
         $iterator = new \RecursiveIteratorIterator(
             new \RecursiveDirectoryIterator($basePath)
         );
-        
+
         $htmlFiles = new \RegexIterator($iterator, '/\.html$/i');
-        
+
         foreach ($htmlFiles as $file) {
             $filePath = $file->getPathname();
             $filename = basename($filePath);
-            
+
             // Skip if already processed or if it's a directory
             if (is_dir($filePath)) {
                 continue;
             }
-            
+
             $this->info("Found remaining file: {$filename}");
-            
+
             try {
                 $html = file_get_contents($filePath);
                 $data = $this->extractPageData($html, $filename, $filename);
-                
+
                 $slug = $this->generateSlug($filename);
-                
+
                 Page::updateOrCreate(
                     ['slug' => $slug],
                     array_merge($data, ['type' => 'page'])
                 );
-                
+
                 $this->line("Imported remaining file: {$filename}");
-                
+
                 // Delete the HTML file after successful import
                 if (unlink($filePath)) {
                     $this->line("Deleted: {$filename}");
@@ -223,7 +230,7 @@ class ImportHtmlContent extends Command
                     $this->warn("Could not delete: {$filename}");
                 }
             } catch (\Exception $e) {
-                $this->error("Error importing remaining file {$filename}: " . $e->getMessage());
+                $this->error("Error importing remaining file {$filename}: ".$e->getMessage());
             }
         }
     }
@@ -233,16 +240,16 @@ class ImportHtmlContent extends Command
         try {
             $html = file_get_contents($filePath);
             $data = $this->extractPageData($html, $title, $filename);
-            
+
             $slug = $this->generateSlug($filename);
-            
+
             Page::updateOrCreate(
                 ['slug' => $slug],
                 $data
             );
-            
+
             $this->line("Imported page: {$title}");
-            
+
             // Delete the HTML file after successful import
             if (unlink($filePath)) {
                 $this->line("Deleted: {$filename}");
@@ -250,41 +257,33 @@ class ImportHtmlContent extends Command
                 $this->warn("Could not delete: {$filename}");
             }
         } catch (\Exception $e) {
-            $this->error("Error importing page {$title}: " . $e->getMessage());
+            $this->error("Error importing page {$title}: ".$e->getMessage());
         }
     }
 
     private function importBlogPost($filePath)
     {
         try {
-            $this->info("Reading file: {$filePath}");
             $html = file_get_contents($filePath);
-            $this->info("File read, size: " . strlen($html) . " bytes");
-            
-            $this->info("Extracting blog post data...");
             $data = $this->extractBlogPostData($html, $filePath);
-            $this->info("Data extracted, title: " . ($data['title'] ?? 'No title'));
-            
+
             $slug = $this->generateSlug(basename($filePath));
-            $this->info("Generated slug: {$slug}");
-            
-            $this->info("Saving to database...");
+
             Page::updateOrCreate(
                 ['slug' => $slug],
                 array_merge($data, ['type' => 'blog_post'])
             );
-            
+
             $this->line("Imported blog post: {$data['title']}");
-            
+
             // Delete the HTML file after successful import
             if (unlink($filePath)) {
-                $this->line("Deleted: " . basename($filePath));
+                $this->line('Deleted: '.basename($filePath));
             } else {
-                $this->warn("Could not delete: " . basename($filePath));
+                $this->warn('Could not delete: '.basename($filePath));
             }
         } catch (\Exception $e) {
-            $this->error("Error importing blog post {$filePath}: " . $e->getMessage());
-            $this->error("Stack trace: " . $e->getTraceAsString());
+            $this->error("Error importing blog post {$filePath}: ".$e->getMessage());
         }
     }
 
@@ -293,24 +292,24 @@ class ImportHtmlContent extends Command
         try {
             $html = file_get_contents($filePath);
             $data = $this->extractServiceData($html, $filePath, $category);
-            
+
             $slug = $this->generateSlug(basename($filePath));
-            
+
             Service::updateOrCreate(
                 ['slug' => $slug],
                 $data
             );
-            
+
             $this->line("Imported service: {$data['title']}");
-            
+
             // Delete the HTML file after successful import
             if (unlink($filePath)) {
-                $this->line("Deleted: " . basename($filePath));
+                $this->line('Deleted: '.basename($filePath));
             } else {
-                $this->warn("Could not delete: " . basename($filePath));
+                $this->warn('Could not delete: '.basename($filePath));
             }
         } catch (\Exception $e) {
-            $this->error("Error importing service {$filePath}: " . $e->getMessage());
+            $this->error("Error importing service {$filePath}: ".$e->getMessage());
         }
     }
 
@@ -327,9 +326,9 @@ class ImportHtmlContent extends Command
                 );
             }
 
-            $this->line("Imported " . count($reviews) . " reviews from homepage");
+            $this->line('Imported '.count($reviews).' reviews from homepage');
         } catch (\Exception $e) {
-            $this->error("Error importing reviews from homepage: " . $e->getMessage());
+            $this->error('Error importing reviews from homepage: '.$e->getMessage());
         }
     }
 
@@ -338,30 +337,30 @@ class ImportHtmlContent extends Command
         try {
             $html = file_get_contents($filePath);
             $data = $this->extractGalleryData($html, $filePath, $category);
-            
+
             $slug = $this->generateSlug(basename($filePath));
-            
+
             Gallery::updateOrCreate(
                 ['slug' => $slug],
                 $data
             );
-            
+
             $this->line("Imported gallery: {$data['title']}");
-            
+
             // Delete the HTML file after successful import
             if (unlink($filePath)) {
-                $this->line("Deleted: " . basename($filePath));
+                $this->line('Deleted: '.basename($filePath));
             } else {
-                $this->warn("Could not delete: " . basename($filePath));
+                $this->warn('Could not delete: '.basename($filePath));
             }
         } catch (\Exception $e) {
-            $this->error("Error importing gallery {$filePath}: " . $e->getMessage());
+            $this->error("Error importing gallery {$filePath}: ".$e->getMessage());
         }
     }
 
     private function extractPageData($html, $title, $filename)
     {
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         @$dom->loadHTML($html);
         $xpath = new DOMXPath($dom);
 
@@ -388,7 +387,7 @@ class ImportHtmlContent extends Command
 
     private function extractBlogPostData($html, $filePath)
     {
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         @$dom->loadHTML($html);
         $xpath = new DOMXPath($dom);
 
@@ -427,7 +426,7 @@ class ImportHtmlContent extends Command
 
     private function extractServiceData($html, $filePath, $category)
     {
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         @$dom->loadHTML($html);
         $xpath = new DOMXPath($dom);
 
@@ -467,7 +466,7 @@ class ImportHtmlContent extends Command
 
     private function extractReviewsFromHomepage($html)
     {
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         @$dom->loadHTML($html);
         $xpath = new DOMXPath($dom);
 
@@ -504,7 +503,7 @@ class ImportHtmlContent extends Command
 
     private function extractGalleryData($html, $filePath, $category)
     {
-        $dom = new DOMDocument();
+        $dom = new DOMDocument;
         @$dom->loadHTML($html);
         $xpath = new DOMXPath($dom);
 
@@ -525,7 +524,7 @@ class ImportHtmlContent extends Command
         $imageNodes = $xpath->query('//img');
         foreach ($imageNodes as $imgNode) {
             $src = $imgNode->getAttribute('src');
-            if ($src && !str_contains($src, 'data:')) {
+            if ($src && ! str_contains($src, 'data:')) {
                 $images[] = $src;
             }
         }
@@ -533,8 +532,8 @@ class ImportHtmlContent extends Command
         return [
             'title' => $title,
             'description' => $this->extractMainContent($xpath),
-            'image_url' => !empty($images) ? $images[0] : null,
-            'thumbnail_url' => !empty($images) ? $images[0] : null,
+            'image_url' => ! empty($images) ? $images[0] : null,
+            'thumbnail_url' => ! empty($images) ? $images[0] : null,
             'alt_text' => $title,
             'sort_order' => 0,
             'featured' => false,
@@ -564,7 +563,7 @@ class ImportHtmlContent extends Command
                         if ($count > 50) { // Limit to prevent infinite loops
                             break;
                         }
-                        $content .= $this->getInnerHtml($node) . "\n";
+                        $content .= $this->getInnerHtml($node)."\n";
                     }
                     if (trim($content)) {
                         return $this->cleanHtml($content);
@@ -593,7 +592,7 @@ class ImportHtmlContent extends Command
             $nodes = $xpath->query($selector);
             if ($nodes->length > 0) {
                 $src = $nodes->item(0)->textContent;
-                if ($src && !str_contains($src, 'data:')) {
+                if ($src && ! str_contains($src, 'data:')) {
                     return $src;
                 }
             }
@@ -609,6 +608,7 @@ class ImportHtmlContent extends Command
         foreach ($children as $child) {
             $innerHTML .= $node->ownerDocument->saveHTML($child);
         }
+
         return $innerHTML;
     }
 
@@ -631,7 +631,8 @@ class ImportHtmlContent extends Command
         if (strlen($text) <= $length) {
             return $text;
         }
-        return substr($text, 0, $length) . '...';
+
+        return substr($text, 0, $length).'...';
     }
 
     private function generateSlug($filename)
@@ -639,6 +640,7 @@ class ImportHtmlContent extends Command
         $slug = str_replace('.html', '', $filename);
         $slug = str_replace('-', ' ', $slug);
         $slug = Str::slug($slug);
+
         return $slug;
     }
 }
