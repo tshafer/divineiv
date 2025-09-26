@@ -11,8 +11,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         AOS.init({
-            duration: 800,
-            offset: 100,
+            duration: 100,
+            offset: 50,
             once: true,
             easing: 'ease-in-out'
         });
@@ -59,9 +59,9 @@
         </div>
 
         <!-- Services Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="400">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($services as $index => $service)
-            <div class="modern-card text-center group" data-aos="fade-up" data-aos-delay="{{ 600 + ($index * 100) }}">
+            <div class="modern-card text-center group">
                 <div class="mb-8">
                     @if($service->image)
                         <div class="mb-6">

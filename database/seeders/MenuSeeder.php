@@ -116,7 +116,10 @@ class MenuSeeder extends Seeder
         ];
 
         foreach ($menus as $menu) {
-            Menu::create($menu);
+            Menu::updateOrCreate([
+                'title' => $menu['title'],
+                'url' => $menu['url'],
+            ], $menu);
         }
     }
 }

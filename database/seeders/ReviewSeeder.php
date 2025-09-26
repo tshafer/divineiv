@@ -56,7 +56,10 @@ class ReviewSeeder extends Seeder
         ];
 
         foreach ($reviews as $review) {
-            Review::create($review);
+            Review::updateOrCreate([
+                'author_name' => $review['author_name'],
+                'content' => $review['content'],
+            ], $review);
         }
     }
 }
