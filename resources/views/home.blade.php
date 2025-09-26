@@ -68,17 +68,17 @@
 </section>
 
 <!-- Services Section -->
-<section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+<section class="py-20 bg-gradient-to-b from-slate-50 to-white">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-16">
             <div class="flex justify-center mb-6">
-                <div class="flex items-center bg-blue-100 rounded-full px-6 py-3">
-                    <i class="fas fa-medical-kit text-blue-600 mr-3 text-lg"></i>
-                    <span class="text-blue-600 font-semibold">Featured Services</span>
+                <div class="flex items-center bg-cyan-50 rounded-full px-6 py-3">
+                    <i class="fas fa-medical-kit text-cyan-600 mr-3 text-lg"></i>
+                    <span class="text-cyan-600 font-semibold">Featured Services</span>
                 </div>
             </div>
-            <h2 class="heading-font text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
+            <h2 class="heading-font text-4xl lg:text-5xl font-bold text-slate-800 mb-6">
                 Transformative
                 <span class="text-gradient">Wellness Solutions</span>
             </h2>
@@ -93,13 +93,13 @@
             @foreach($services as $service)
             <div class="modern-card text-center group">
                 <div class="mb-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                         <i class="fas fa-heart text-white text-2xl"></i>
                     </div>
-                    <h3 class="heading-font text-2xl font-semibold text-gray-800 mb-4">{{ $service->title }}</h3>
+                    <h3 class="heading-font text-2xl font-semibold text-slate-800 mb-4">{{ $service->title }}</h3>
                     <p class="text-gray-600 mb-6 leading-relaxed">{{ $service->description }}</p>
                 </div>
-                <a href="{{ route('service', $service->slug) }}" class="group-hover:text-blue-600 text-blue-500 font-semibold hover:text-blue-700 transition-colors duration-300 flex items-center justify-center">
+                <a href="{{ route('service', $service->slug) }}" class="group-hover:text-cyan-600 text-cyan-500 font-semibold hover:text-cyan-700 transition-colors duration-300 flex items-center justify-center">
                     Discover More
                     <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -340,7 +340,7 @@
                     <i class="fas fa-calendar-alt text-white text-2xl"></i>
                 </div>
                 <h3 class="heading-font text-2xl font-bold mb-4">Book Appointment</h3>
-                <a href="{{ route('page', 'contact-us') }}" class="text-blue-100 hover:text-white transition-colors duration-300 font-semibold">
+                <a href="{{ route('contact') }}" class="text-blue-100 hover:text-white transition-colors duration-300 font-semibold">
                     Schedule Your Consultation
                 </a>
             </div>
@@ -349,7 +349,7 @@
         <!-- Call to Action -->
         <div class="text-center">
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('page', 'contact-us') }}" class="btn-primary bg-white text-blue-600 hover:bg-blue-50 group inline-flex items-center">
+                <a href="{{ route('contact') }}" class="btn-primary bg-white text-blue-600 hover:bg-blue-50 group inline-flex items-center">
                     <i class="fas fa-envelope mr-3"></i>
                     Send Us a Message
                     <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform"></i>

@@ -17,15 +17,15 @@
         <div class="max-w-4xl mx-auto">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
-                    <i class="fas fa-star text-yellow-300 mr-3"></i>
-                    <span class="text-blue-200 font-semibold">Client Testimonials</span>
+                    <i class="fas fa-star text-cyan-300 mr-3"></i>
+                    <span class="text-cyan-200 font-semibold">Client Testimonials</span>
                 </div>
             </div>
             <h1 class="heading-font text-5xl lg:text-7xl font-bold mb-6">
                 Patient
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-green-400">Reviews</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-100">Reviews</span>
             </h1>
-            <p class="text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-blue-100 leading-relaxed">
+            <p class="text-xl lg:text-2xl mb-12 max-w-3xl mx-auto text-white/90 leading-relaxed">
                 See what our patients are saying about their transformative experience at Divine IV and Wellness.
             </p>
             <div class="flex justify-center items-center">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="text-center">
                     <span class="text-5xl font-bold heading-font block">5.0</span>
-                    <span class="text-xl text-blue-200">Average Rating</span>
+                    <span class="text-xl text-cyan-200">Average Rating</span>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
 </section>
 
 <!-- Call to Action -->
-<section class="py-20 medical-gradient text-white relative overflow-hidden">
+<section class="py-20 hero-gradient text-white relative overflow-hidden">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
         <div class="absolute top-10 right-10 w-40 h-40 border border-white rounded-full"></div>
@@ -102,25 +102,25 @@
         <div class="max-w-4xl mx-auto">
             <div class="flex justify-center mb-6">
                 <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
-                    <i class="fas fa-heart text-blue-200 mr-3"></i>
-                    <span class="text-blue-200 font-semibold">Join Our Family</span>
+                    <i class="fas fa-heart text-cyan-300 mr-3"></i>
+                    <span class="text-cyan-200 font-semibold">Join Our Family</span>
                 </div>
             </div>
             <h2 class="heading-font text-4xl lg:text-6xl font-bold mb-6">
                 Ready to Experience Our
-                <span class="text-yellow-300">Care?</span>
+                <span class="text-cyan-300">Care?</span>
             </h2>
-            <p class="text-xl lg:text-2xl text-blue-100 mb-12 leading-relaxed">
+            <p class="text-xl lg:text-2xl text-white/90 mb-12 leading-relaxed">
                 Join our satisfied patients and start your transformative wellness journey today.
             </p>
 
             <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('page', 'contact-us') }}" class="bg-white text-blue-600 px-10 py-5 rounded-full font-semibold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center group">
+                <a href="{{ route('contact') }}" class="bg-white text-slate-700 px-10 py-5 rounded-full font-semibold text-lg hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-xl flex items-center group">
                     <i class="fas fa-calendar-alt mr-3"></i>
                     Schedule Consultation
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>
                 </a>
-                <a href="{{ route('services') }}" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105 flex items-center group">
+                <a href="{{ route('services') }}" class="border-2 border-white text-white px-10 py-5 rounded-full font-semibold text-lg hover:bg-white hover:text-slate-700 transition-all duration-300 transform hover:scale-105 flex items-center group">
                     <i class="fas fa-th-large mr-3"></i>
                     View Our Services
                     <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform"></i>

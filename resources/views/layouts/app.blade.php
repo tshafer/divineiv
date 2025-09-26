@@ -266,7 +266,7 @@
                         Resources
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('page', 'contact-us') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
+                    <a href="{{ route('contact') }}" class="text-white hover:text-cyan-300 font-medium transition-colors duration-300 relative group">
                         Contact
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>
                     </a>

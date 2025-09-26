@@ -35,7 +35,7 @@
 </section>
 
 <!-- Services Grid -->
-<section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+<section class="py-20 bg-gradient-to-b from-slate-50 to-white">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <!-- Services Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

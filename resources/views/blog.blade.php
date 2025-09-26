@@ -34,7 +34,7 @@
 </section>
 
 <!-- Blog Posts -->
-<section class="py-20 bg-gradient-to-b from-blue-50 to-white">
+<section class="py-20 bg-gradient-to-b from-slate-50 to-white">
     <div class="max-w-7xl mx-auto px-4 lg:px-8">
         <!-- Posts Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
@@ -47,19 +47,19 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
                 @else
-                <div class="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center relative overflow-hidden rounded-t-2xl">
+                <div class="h-48 bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center relative overflow-hidden rounded-t-2xl">
                     <i class="fas fa-newspaper text-white text-6xl opacity-80"></i>
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-400/50 to-blue-700/50"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/50 to-blue-700/50"></div>
                 </div>
                 @endif
 
                 <!-- Content -->
                 <div class="p-8">
-                    <div class="flex items-center text-blue-600 text-sm font-semibold mb-4">
+                    <div class="flex items-center text-cyan-600 text-sm font-semibold mb-4">
                         <i class="fas fa-calendar-alt mr-2"></i>
                         {{ $post->created_at->format('F j, Y') }}
                     </div>
-                    <h2 class="heading-font text-2xl font-semibold text-gray-800 mb-4 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                    <h2 class="heading-font text-2xl font-semibold text-slate-800 mb-4 line-clamp-2 group-hover:text-cyan-600 transition-colors">
                         {{ $post->title }}
                     </h2>
                     @if($post->excerpt)
