@@ -75,7 +75,7 @@ class ImportHtmlContent extends Command
             'privacy-policy.html' => 'Privacy Policy',
             'sitemap.html' => 'Sitemap',
             'leave-a-review.html' => 'Leave a Review',
-            // 'reviews.html' => 'Reviews', // Skip for now - very large file
+            'reviews.html' => 'Reviews',
             'galleries.html' => 'Galleries',
             'services.html' => 'Services',
             'med-spa-blog.html' => 'Med Spa Blog',
